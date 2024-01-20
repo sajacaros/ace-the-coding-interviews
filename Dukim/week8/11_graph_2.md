@@ -29,6 +29,8 @@ def generate_graph(nodes):
 
 def solution(n, wires_):
     print('wires : ', wires_)
+    print(f'graph : {list(generate_graph(wires_).items())}\n')
+    
     diff = float('inf')
     for remove_idx in range(0, len(wires_)):
         print(f'제거 : {wires_[remove_idx]}')
@@ -46,8 +48,10 @@ def solution(n, wires_):
 * 결과
 ``` 
 wires :  [[1, 3], [2, 3], [3, 4], [4, 5], [4, 6], [4, 7], [7, 8], [7, 9]]
+graph : [(1, [3]), (3, [1, 2, 4]), (2, [3]), (4, [3, 5, 6, 7]), (5, [4]), (6, [4]), (7, [4, 8, 9]), (8, [7]), (9, [7])]
+
 제거 : [1, 3]
-graph : [(2, [3]), (3, [2, 4]), (4, [3, 5, 6, 7]), (5, [4]), (6, [4]), (7, [4, 8, 9]), (8, [7]), (9, [7]), (1, [])]
+graph : [(2, [3]), (3, [2, 4]), (4, [3, 5, 6, 7]), (5, [4]), (6, [4]), (7, [4, 8, 9]), (8, [7]), (9, [7])]
 노드 개수 : 1, diff : 7
 
 제거 : [2, 3]

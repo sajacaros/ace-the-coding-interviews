@@ -23,16 +23,18 @@ def generate_graph(nodes):
 
 def solution(n, wires_):
     print('wires : ', wires_)
+    print(f'graph : {list(generate_graph(wires_).items())}\n')
+
     diff = float('inf')
     for remove_idx in range(0, len(wires_)):
         print(f'제거 : {wires_[remove_idx]}')
         wires = copy.deepcopy(wires_)
         wires.remove(wires_[remove_idx])
         connected_graph = generate_graph(wires)
+        print(f'graph : {list(connected_graph.items())}')
         left_nodes = dfs(connected_graph, 1)
         right_nodes = n-left_nodes
         diff = min(diff, abs(left_nodes-right_nodes))
-        print(f'graph : {list(connected_graph.items())}')
         print(f'노드 개수 : {left_nodes}, diff : {diff}\n')
     print('-' * 20)
     return diff
